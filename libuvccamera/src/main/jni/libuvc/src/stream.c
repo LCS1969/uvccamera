@@ -1590,6 +1590,7 @@ uvc_error_t uvc_stream_start_bandwidth(uvc_stream_handle_t *strmh,
 		ret = libusb_submit_transfer(strmh->transfers[transfer_id]);
 		if (UNLIKELY(ret != UVC_SUCCESS)) {
 			UVC_DEBUG("libusb_submit_transfer failed");
+			LOGE("libusb_submit_transfer failed");
 			break;
 		}
 	}

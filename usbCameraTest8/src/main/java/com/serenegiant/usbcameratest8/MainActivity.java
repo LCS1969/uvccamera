@@ -80,7 +80,7 @@ public final class MainActivity extends BaseActivity implements CameraDialog.Cam
      * {@link UVCCamera#setPreviewSize(int, int, int)} throw exception
      * 0:YUYV, other:MJPEG
      */
-    private static final int PREVIEW_MODE = 1;
+    private static final int PREVIEW_MODE = 0;
 
 	protected static final int SETTINGS_HIDE_DELAY_MS = 2500;
 

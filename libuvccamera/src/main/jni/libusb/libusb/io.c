@@ -1449,15 +1449,18 @@ int API_EXPORTED libusb_submit_transfer(struct libusb_transfer *transfer) {
 		r = calculate_timeout(itransfer);
 		if (UNLIKELY(r < 0)) {
 			r = LIBUSB_ERROR_OTHER;
+			LOGE("LIBUSB_ERROR_OTHER with code : %d", r );
 			goto out;
 		}
 
 		r = add_to_flying_list(itransfer);
 		if (LIKELY(r == LIBUSB_SUCCESS)) {
 			r = usbi_backend->submit_transfer(itransfer);
+			LOGE("LIBUSB_SUCCESS  with code : %d", r );
 		}
 		if (UNLIKELY(r != LIBUSB_SUCCESS)) {
 			list_del(&itransfer->list);
+			LOGE("LIBUSB_ERROR with code : %d", r );
 			arm_timerfd_for_next_timeout(ctx);
 		} else {
 			/* keep a reference to this device */
@@ -1468,6 +1471,7 @@ out:
 	}
 	usbi_mutex_unlock(&itransfer->lock);
 	usbi_mutex_unlock(&ctx->flying_transfers_lock);
+	
 	if (updated_fds)
 		usbi_fd_notification(ctx);
 	return r;

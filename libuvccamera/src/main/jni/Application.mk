@@ -27,6 +27,7 @@
 #NDK_TOOLCHAIN_VERSION := 4.9
 
 APP_PLATFORM := android-14
-APP_ABI := armeabi armeabi-v7a x86 mips
+#remove mips by URL : https://github.com/saki4510t/UVCCamera/issues/140
+APP_ABI := armeabi armeabi-v7a x86 
 #APP_OPTIM := debug
 APP_OPTIM := release

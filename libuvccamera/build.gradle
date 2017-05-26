@@ -50,6 +50,12 @@ android {
 			jni.srcDirs = []
 		}
 	}
+	aaptOptions {
+		cruncherEnabled = false
+	}
+	lintOptions {
+		abortOnError false
+	}
 }
 
 tasks.withType(JavaCompile) {

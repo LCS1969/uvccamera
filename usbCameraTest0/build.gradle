@@ -46,6 +46,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
     }
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
